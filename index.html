@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Why I Want to Learn Software Programming</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .carousel {
+            width: 80%;
+            max-width: 600px;
+            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            position: relative;
+        }
+
+        .slides {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+        }
+
+        .slide {
+            min-width: 100%;
+            box-sizing: border-box;
+            padding: 40px;
+            background-color: #ffffff;
+            text-align: center;
+        }
+
+        .navigation {
+            position: absolute;
+            top: 50%;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            transform: translateY(-50%);
+        }
+
+        .navigation button {
+            background-color: rgba(0, 0, 0, 0.5);
+            border: none;
+            color: white;
+            padding: 10px;
+            cursor: pointer;
+            border-radius: 50%;
+        }
+
+        .navigation button:hover {
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+    </style>
+</head>
+<body>
+    <div class="carousel">
+        <div class="slides" id="slides">
+            <div class="slide"> 
+                <h2>Creativity and Problem Solving</h2>
+                <p>I love solving problems and programming lets me approach them creatively. Every project presents a challenge that allows me to think outside the box.</p>
+            </div>
+            <div class="slide">
+                <h2>Making a Real-World Impact</h2>
+                <p>Programming gives me the opportunity to create things that can make a difference in the world. I want to develop applications that help people and solve everyday problems.</p>
+            </div>
+            <div class="slide">
+                <h2>Constant Learning and Growth</h2>
+                <p>Technology is always evolving, and programming offers the chance to keep learning and growing. I enjoy staying up-to-date with new technologies and continuously improving my skills.</p>
+            </div>
+        </div>
+        <div class="navigation">
+            <button id="prev">&#10094;</button>
+            <button id="next">&#10095;</button>
+        </div>
+    </div>
+
+    <script>
+        const slides = document.getElementById('slides');
+        const prev = document.getElementById('prev');
+        const next = document.getElementById('next');
+        let index = 0;
+
+        function showSlide(newIndex) {
+            if (newIndex < 0) {
+                index = slides.children.length - 1;
+            } else if (newIndex >= slides.children.length) {
+                index = 0;
+            } else {
+                index = newIndex;
+            }
+            slides.style.transform = `translateX(${-index * 100}%)`;
+        }
+
+        prev.addEventListener('click', () => showSlide(index - 1));
+        next.addEventListener('click', () => showSlide(index + 1));
+
+        setInterval(() => showSlide(index + 1), 5000); // Auto-slide every 5 seconds
+    </script>
+</body>
+</html>
